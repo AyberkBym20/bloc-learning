@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
                 result.toString(),
@@ -31,26 +31,38 @@ class _HomePageState extends State<HomePage> {
                 controller: tfNumber1,
                 decoration: InputDecoration(hintText: 'Sayı girin'),
               ),
-              const SizedBox(
-                height: 50,
-              ),
               TextField(
                 controller: tfNumber2,
                 decoration: InputDecoration(hintText: 'Sayı girin'),
-              ),
-              const SizedBox(
-                height: 50,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Topla'),
+                    onPressed: () {
+                      String fetchNumber1 = tfNumber1.text;
+                      String fetchNumber2 = tfNumber2.text;
+                      int number1 = int.parse(fetchNumber1);
+                      int number2 = int.parse(fetchNumber2);
+                      int sum = number1 + number2;
+                      setState(() {
+                        result = sum;
+                      });
+                    },
+                    child: const Text('Topla'),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Çarp'),
+                    onPressed: () {
+                      String fetchNumber1 = tfNumber1.text;
+                      String fetchNumber2 = tfNumber2.text;
+                      int number1 = int.parse(fetchNumber1);
+                      int number2 = int.parse(fetchNumber2);
+                      int sum = number1 * number2;
+                      setState(() {
+                        result = sum;
+                      });
+                    },
+                    child: const Text('Çarp'),
                   ),
                 ],
               ),
