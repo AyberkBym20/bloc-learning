@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var tfNumber1 = TextEditingController();
   var tfNumber2 = TextEditingController();
-  int result = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
