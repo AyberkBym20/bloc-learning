@@ -8,6 +8,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var tfController1 = TextEditingController();
+  var tfController2 = TextEditingController();
+  int result = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,16 +24,18 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '0',
+                result.toString(),
                 style: TextStyle(fontSize: 50),
               ),
               TextField(
+                controller: tfController1,
                 decoration: InputDecoration(hintText: 'Sayı girin'),
               ),
               const SizedBox(
                 height: 50,
               ),
               TextField(
+                controller: tfController2,
                 decoration: InputDecoration(hintText: 'Sayı girin'),
               ),
               const SizedBox(
