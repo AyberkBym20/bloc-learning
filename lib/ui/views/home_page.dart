@@ -1,4 +1,6 @@
+import 'package:bloc_learning/ui/cubit/home_page_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,9 +25,14 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                result.toString(),
-                style: TextStyle(fontSize: 50),
+              BlocBuilder<HomePageCubit, int>(
+                //*Dinleme yapısı'
+                builder: (context, result) {
+                  return Text(
+                    result.toString(),
+                    style: TextStyle(fontSize: 50),
+                  );
+                },
               ),
               TextField(
                 controller: tfNumber1,
@@ -40,27 +47,35 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      String fetchNumber1 = tfNumber1.text;
-                      String fetchNumber2 = tfNumber2.text;
-                      int number1 = int.parse(fetchNumber1);
-                      int number2 = int.parse(fetchNumber2);
-                      int sum = number1 + number2;
-                      setState(() {
-                        result = sum;
-                      });
+                      // String fetchNumber1 = tfNumber1.text;
+                      // String fetchNumber2 = tfNumber2.text;
+                      // int number1 = int.parse(fetchNumber1);
+                      // int number2 = int.parse(fetchNumber2);
+                      // int sum = number1 + number2;
+                      // setState(() {
+                      //   result = sum;
+                      // });//*Cubit kullanmadan yapılan kod
+
+                      //*Cubit yapısı kullanıldığında kod
+                      context
+                          .read<HomePageCubit>()
+                          .addUp(tfNumber1.text, tfNumber2.text);
                     },
                     child: const Text('Topla'),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      String fetchNumber1 = tfNumber1.text;
-                      String fetchNumber2 = tfNumber2.text;
-                      int number1 = int.parse(fetchNumber1);
-                      int number2 = int.parse(fetchNumber2);
-                      int sum = number1 * number2;
-                      setState(() {
-                        result = sum;
-                      });
+                      // String fetchNumber1 = tfNumber1.text;
+                      // String fetchNumber2 = tfNumber2.text;
+                      // int number1 = int.parse(fetchNumber1);
+                      // int number2 = int.parse(fetchNumber2);
+                      // int sum = number1 * number2;
+                      // setState(() {
+                      //   result = sum;
+                      // });
+
+                      context.read<HomePageCubit>().addmultiplicationUpUp(
+                          tfNumber1.text, tfNumber2.text);
                     },
                     child: const Text('Çarp'),
                   ),
