@@ -6,10 +6,11 @@ class HomePageCubit extends Cubit<int> {
 
   var mrepo = MathRepo();
   void addUp(String fetchNum1, String fetchNum2) {
-    emit(mrepo.addUp(fetchNum1, fetchNum2));
+    emit(mrepo.addUp(fetchNum1, fetchNum2)); //*Tetikleme ve veri gönder
   }
 
   void addmultiplicationUpUp(String fetchNum1, String fetchNum2) {
-    emit(mrepo.addmultiplicationUpUp(fetchNum1, fetchNum2));
+    emit(mrepo.addmultiplicationUpUp(
+        fetchNum1, fetchNum2)); //*Tetikleme ve veri gönder
   }
 }
